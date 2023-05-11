@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package coleccionesej3;
+package coleccionesej6;
 
-import servicios.AlumnoServicio;
+import servicios.TiendaServicio;
 
 /**
  *
  * @author OvExX
  */
-public class ColeccionesEj3 {
+public class ColeccionesEj6 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        AlumnoServicio as = new AlumnoServicio();
-        as.menu();
+        TiendaServicio ts = new TiendaServicio();
+        ts.menu();
     }
     
 }
