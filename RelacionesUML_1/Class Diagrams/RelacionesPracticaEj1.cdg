@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="RelacionesPracticaEj1">
+  <ClassDiagramComponents>
+    <Class name="Perro" package="" visibility="public" xPosition="424.0" yPosition="131.0">
+      <Fields>
+        <Field name="raza" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="edad" type="byte" visibility="private"/>
+        <Field name="tamanyo" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Persona" package="" visibility="public" xPosition="144.0" yPosition="121.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="edad" type="byte" visibility="private"/>
+        <Field name="doc" type="int" visibility="private"/>
+        <Field name="perro" type="Perro" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="duenioDe" source="Persona" target="Perro" type="Default" sourceCardinality="0..1" targetCardinality="0..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

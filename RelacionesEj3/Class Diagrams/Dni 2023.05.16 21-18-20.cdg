@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Dni">
+  <ClassDiagramComponents>
+    <Class name="Dni" package="entidades" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="serie" type="char" visibility="private"/>
+        <Field name="num" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="char" name="serie"/>
+          <Argument type="int" name="num"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getSerie" returnType="char" visibility="public"/>
+        <Method name="setSerie" returnType="void" visibility="public">
+          <Argument type="char" name="serie"/>
+        </Method>
+        <Method name="getNum" returnType="int" visibility="public"/>
+        <Method name="setNum" returnType="void" visibility="public">
+          <Argument type="int" name="num"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

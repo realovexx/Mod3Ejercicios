@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="RelacionesEj_III">
+  <ClassDiagramComponents>
+    <Class name="Baraja" package="entidades" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="mazo" type="Set&lt;Carta&gt;" visibility="private"/>
+        <Field name="monton" type="Set&lt;Carta&gt;" visibility="private"/>
+        <Field name="leer" type="Scanner" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getMazo" returnType="Set&lt;Carta&gt;" visibility="public"/>
+        <Method name="setMazo" returnType="void" visibility="public">
+          <Argument type="Set&lt;Carta&gt;" name="mazo"/>
+        </Method>
+        <Method name="barajar" returnType="void" visibility="public"/>
+        <Method name="darCartas" returnType="void" visibility="public"/>
+        <Method name="cartasMonton" returnType="void" visibility="public"/>
+        <Method name="mostrarBaraja" returnType="void" visibility="public"/>
+        <Method name="cartasDisponibles" returnType="void" visibility="public"/>
+        <Method name="siguienteCarta" returnType="void" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Carta" package="entidades" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="numero" type="int" visibility="private"/>
+        <Field name="palo" type="Palos" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="numero"/>
+          <Argument type="Palos" name="palo"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="getNumero" returnType="int" visibility="public"/>
+        <Method name="setNumero" returnType="void" visibility="public">
+          <Argument type="int" name="numero"/>
+        </Method>
+        <Method name="getPalo" returnType="Palos" visibility="public"/>
+        <Method name="setPalo" returnType="void" visibility="public">
+          <Argument type="Palos" name="palo"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="Palos" package="entidades" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Literals>
+        <Literal name="ESPADAS"/>
+        <Literal name="BASTOS"/>
+        <Literal name="OROS"/>
+        <Literal name="COPAS"/>
+      </Literals>
+    </Enum>
+    <Class name="RelacionesEj_III" package="relacionesej_iii" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="mazo" source="entidades.Baraja" target="entidades.Carta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Set&lt;Carta&gt;"/>
+    <UseRelation source="entidades.Carta" target="entidades.Palos" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entidades.Baraja" target="entidades.Carta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="monton" source="entidades.Baraja" target="entidades.Carta" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Set&lt;Carta&gt;"/>
+    <HasRelation name="palo" source="entidades.Carta" target="entidades.Palos" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
