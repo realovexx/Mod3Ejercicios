@@ -19,7 +19,7 @@ public final class CincoE extends CuatroE{
     public CincoE() {
     }
 
-    public CincoE(int cantSalones, int cantSuites, int cantLimo, String gym, String resto, int capResto, int habitaciones, int camas, int pisos, double precioHab, String nombre, String direccion, String localidad, String gerente) {
+    public CincoE(int cantSalones, int cantSuites, int cantLimo, String gym, String resto, int capResto, int habitaciones, int camas, int pisos, Double precioHab, String nombre, String direccion, String localidad, String gerente) {
         super(gym, resto, capResto, habitaciones, camas, pisos, precioHab, nombre, direccion, localidad, gerente);
         this.cantSalones = cantSalones;
         this.cantSuites = cantSuites;
@@ -66,12 +66,11 @@ public final class CincoE extends CuatroE{
         this.cantLimo = cantLimo;
     }
 
-    public Scanner getLeer() {
-        return leer;
-    }
-
-    public void setLeer(Scanner leer) {
-        this.leer = leer;
+    @Override
+    public String toString() {
+        System.out.println(super.toString());
+        return "" + "\n Cantidad de Salones de conferencias: " + cantSalones + ""
+                + "\n Cantidad de Habitaciones Suites: " + cantSuites + "\n Cantidad de Limosinas disponibles: " + cantLimo ;
     }
     
     

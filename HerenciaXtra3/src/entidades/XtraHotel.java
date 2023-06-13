@@ -58,6 +58,12 @@ public class XtraHotel extends Alojamiento{
     public void setArea(double area) {
         this.area = area;
     }
+
+    @Override
+    public String toString() {
+        System.out.println(super.toString());
+        return "\n Tipo: Alojamiento Extra Hotelero" + "\n El alojamiento es privado?: " + privado + "\n Area en metros cuadrados: " + area ;
+    }
     
     
     

@@ -69,6 +69,13 @@ public class Alojamiento {
     public void setGerente(String gerente) {
         this.gerente = gerente;
     }
+
+    @Override
+    public String toString() {
+        return "Datos del Alojamiento: " + "\n \n Nombre: " + nombre + "\n Dirección: "
+                + "" + direccion + "\n Localidad: " + localidad + "\n Nombre del gerente Encargado: "
+                + "" + gerente;
+    }
     
     
 }

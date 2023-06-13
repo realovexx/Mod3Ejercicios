@@ -79,6 +79,13 @@ public final class Residencia extends XtraHotel{
     public void setCampDeport(boolean campDeport) {
         this.campDeport = campDeport;
     }
+
+    @Override
+    public String toString() {
+        System.out.println(super.toString());
+        return "\n Tipo: Residencia." + "\n Cantidad de habitaciones: " + habs + ""
+                + "\n Posee descuento segun Gremio?: " + descGremio + "\n Posee campo deportivo?: " + campDeport ;
+    }
    
-   
+    
 }

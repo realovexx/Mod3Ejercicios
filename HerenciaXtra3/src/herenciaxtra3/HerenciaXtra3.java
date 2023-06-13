@@ -4,10 +4,14 @@
  */
 package herenciaxtra3;
 
+import entidades.Alojamiento;
 import entidades.Camping;
 import entidades.CincoE;
 import entidades.CuatroE;
 import entidades.Residencia;
+import java.util.ArrayList;
+import java.util.List;
+import servicios.Consulta;
 
 /**
  *
@@ -23,18 +27,37 @@ public class HerenciaXtra3 {
         CincoE h2 = new CincoE();
         Camping c = new Camping();
         Residencia r = new Residencia();
+        
         h1.crearHotel4estrellas();
         h1.calcularPrecioHab();
+        
         System.out.println("Precio: "+h1.getPrecioHab());
         System.out.println(h1.toString());
+        
         h2.crearHotel5Estrellas();
         h2.calcularPrecioHab();
+        
         System.out.println("Precio: "+h2.getPrecioHab());
         System.out.println(h2.toString());
+        
         c.crearCamping();
+        
         System.out.println(c.toString());
+        
         r.crearResidencia();
+        
         System.out.println(r.toString());
+        
+        List<Alojamiento> lista = new ArrayList();
+        
+        lista.add(h1);
+        lista.add(h2);
+        lista.add(c);
+        lista.add(r);
+        
+        Consulta cs = new Consulta();
+        
+        cs.menu(lista);
         
     }
     

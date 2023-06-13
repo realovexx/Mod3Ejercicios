@@ -14,13 +14,13 @@ public abstract class Hotel extends Alojamiento{
     protected int habitaciones;
     protected int camas;
     protected int pisos;
-    protected double precioHab;
+    protected Double precioHab;
     public Scanner leer = new Scanner(System.in).useDelimiter("\n");
 
     public Hotel() {
     }
 
-    public Hotel(int habitaciones, int camas, int pisos, double precioHab, String nombre, String direccion, String localidad, String gerente) {
+    public Hotel(int habitaciones, int camas, int pisos, Double precioHab, String nombre, String direccion, String localidad, String gerente) {
         super(nombre, direccion, localidad, gerente);
         this.habitaciones = habitaciones;
         this.camas = camas;
@@ -64,11 +64,11 @@ public abstract class Hotel extends Alojamiento{
         this.pisos = pisos;
     }
 
-    public double getPrecioHab() {
+    public Double getPrecioHab() {
         return precioHab;
     }
 
-    public void setPrecioHab(double precioHab) {
+    public void setPrecioHab(Double precioHab) {
         this.precioHab = precioHab;
     }
 
@@ -78,6 +78,13 @@ public abstract class Hotel extends Alojamiento{
 
     public void setLeer(Scanner leer) {
         this.leer = leer;
+    }
+
+    @Override
+    public String toString() {
+        System.out.println(super.toString());
+        return "\nTipo: Hotel. \n Cantidad de habitaciones: " + habitaciones + "\n Cantidad de camas: " + camas + ""
+                + "\n Cantidad de pisos: " + pisos + "\n Precio por habitacion: " + precioHab ;
     }
     
     

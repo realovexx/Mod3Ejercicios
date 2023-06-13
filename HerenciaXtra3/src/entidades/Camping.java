@@ -69,6 +69,13 @@ public final class Camping extends XtraHotel{
     public void setResto(boolean resto) {
         this.resto = resto;
     }
+
+    @Override
+    public String toString() {
+        System.out.println(super.toString());
+        return "\n Tipo: Camping." + "\n Capacidad máxima de carpas=" + carpas + ""
+                + "\n Cantidad de baños: " + banos + "\n Tiene restaurant?: " + resto ;
+    }
     
     
 }

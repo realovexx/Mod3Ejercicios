@@ -19,7 +19,7 @@ public class CuatroE extends Hotel{
     public CuatroE() {
     }
 
-    public CuatroE(String gym, String resto, int capResto, int habitaciones, int camas, int pisos, double precioHab, String nombre, String direccion, String localidad, String gerente) {
+    public CuatroE(String gym, String resto, int capResto, int habitaciones, int camas, int pisos, Double precioHab, String nombre, String direccion, String localidad, String gerente) {
         super(habitaciones, camas, pisos, precioHab, nombre, direccion, localidad, gerente);
         this.gym = gym;
         this.resto = resto;
@@ -90,13 +90,12 @@ public class CuatroE extends Hotel{
         this.capResto = capResto;
     }
 
-    public Scanner getLeer() {
-        return leer;
+    @Override
+    public String toString() {
+        System.out.println(super.toString());
+        return "\n Tiene GYM?: " + gym + "\n Nombre del Restaurant: " + resto + "\n Capacidad del Restaurant: " + capResto ;
     }
-
-    public void setLeer(Scanner leer) {
-        this.leer = leer;
-    }
+    
     
     
 }
