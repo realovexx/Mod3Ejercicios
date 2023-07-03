@@ -12,9 +12,12 @@ public class Repulsor {
     private int consumo = 1;  //Hay que inventar un nivel de consumo
     private int tiempoDeUso;
     public boolean daniado;
+    public String lado;
+    public boolean destruido;
 
     public Repulsor() {
          daniado = false;
+         destruido = false;
     }
 
     public int getConsumo() {
@@ -40,5 +43,22 @@ public class Repulsor {
     public void setDaniado(boolean daniado) {
         this.daniado = daniado;
     }
+
+    public String getLado() {
+        return lado;
+    }
+
+    public void setLado(String lado) {
+        this.lado = lado;
+    }
+
+    public boolean isDestruido() {
+        return destruido;
+    }
+
+    public void setDestruido(boolean destruido) {
+        this.destruido = destruido;
+    }
+    
     
 }

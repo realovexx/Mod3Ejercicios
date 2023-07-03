@@ -6,6 +6,7 @@ package entidades;
 
 import entidades.ArcGenerator;
 import entidades.Consola;
+import java.util.List;
 
 /**
  *
@@ -14,15 +15,14 @@ import entidades.Consola;
 public class Armadura {
     private String colorPrimario;
     private String colorSecundario;
-    private Propulsor propulsorDerecho;
-    private Propulsor propulsorIzquierdo;
-    private Repulsor repulsorDerecho;
-    private Repulsor repulsorIzquierdo;
+    private List<Propulsor> piernas;
+    private List<Repulsor> brazos;
     private int resistencia;
     private int salud;
     private ArcGenerator arcGenerator;
     private Consola consola;
     private Sintetizador synth;
+    
 
     public Armadura() {
     }
@@ -41,38 +41,6 @@ public class Armadura {
 
     public void setColorSecundario(String colorSecundario) {
         this.colorSecundario = colorSecundario;
-    }
-
-    public Propulsor getPropulsorDerecho() {
-        return propulsorDerecho;
-    }
-
-    public void setPropulsorDerecho(Propulsor propulsorDerecho) {
-        this.propulsorDerecho = propulsorDerecho;
-    }
-
-    public Propulsor getPropulsorIzquierdo() {
-        return propulsorIzquierdo;
-    }
-
-    public void setPropulsorIzquierdo(Propulsor propulsorIzquierdo) {
-        this.propulsorIzquierdo = propulsorIzquierdo;
-    }
-
-    public Repulsor getRepulsorDerecho() {
-        return repulsorDerecho;
-    }
-
-    public void setRepulsorDerecho(Repulsor repulsorDerecho) {
-        this.repulsorDerecho = repulsorDerecho;
-    }
-
-    public Repulsor getRepulsorIzquierdo() {
-        return repulsorIzquierdo;
-    }
-
-    public void setRepulsorIzquierdo(Repulsor repulsorIzquierdo) {
-        this.repulsorIzquierdo = repulsorIzquierdo;
     }
 
     public int getResistencia() {
@@ -113,6 +81,22 @@ public class Armadura {
 
     public void setSynth(Sintetizador synth) {
         this.synth = synth;
+    }
+
+    public List<Propulsor> getPiernas() {
+        return piernas;
+    }
+
+    public void setPiernas(List<Propulsor> piernas) {
+        this.piernas = piernas;
+    }
+
+    public List<Repulsor> getBrazos() {
+        return brazos;
+    }
+
+    public void setBrazos(List<Repulsor> brazos) {
+        this.brazos = brazos;
     }
     
     

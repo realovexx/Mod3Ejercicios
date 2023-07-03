@@ -12,9 +12,11 @@ public class Consola {
     private int consumo = 1;  //Hay que inventar un nivel de consumo
     private int tiempoDeUso; 
     public boolean daniado;
+    private boolean destruido;
 
     public Consola() {
          daniado = false;
+         destruido = false;
     }
 
     public int getConsumo() {
@@ -39,6 +41,14 @@ public class Consola {
 
     public void setDaniado(boolean daniado) {
         this.daniado = daniado;
+    }
+
+    public boolean isDestruido() {
+        return destruido;
+    }
+
+    public void setDestruido(boolean destruido) {
+        this.destruido = destruido;
     }
     
     

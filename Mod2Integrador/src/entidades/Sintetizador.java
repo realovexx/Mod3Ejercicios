@@ -12,6 +12,7 @@ public class Sintetizador {
     private int consumo = 1;  //Hay que inventar un nivel de consumo
     private int tiempoDeUso;  
     public boolean daniado;
+    private boolean destruido;
 
     public Sintetizador() {
          daniado = false;
@@ -39,6 +40,14 @@ public class Sintetizador {
 
     public void setDaniado(boolean daniado) {
         this.daniado = daniado;
+    }
+
+    public boolean isDestruido() {
+        return destruido;
+    }
+
+    public void setDestruido(boolean destruido) {
+        this.destruido = destruido;
     }
     
     

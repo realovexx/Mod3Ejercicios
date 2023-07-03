@@ -11,7 +11,9 @@ import entidades.Consola;
 import entidades.Propulsor;
 import entidades.Repulsor;
 import entidades.Sintetizador;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -47,19 +49,25 @@ public class ArmaduraServicio {
 
         System.out.println("Inicializando dispositivos");
 
+        List<Propulsor> piernas = new ArrayList();
         Propulsor pieDerecho = new Propulsor();
         Propulsor pieIzquierdo = new Propulsor();
         pieDerecho.setTiempoDeUso(0);
         pieIzquierdo.setTiempoDeUso(0);
-        mk1.setPropulsorDerecho(pieDerecho);
-        mk1.setPropulsorIzquierdo(pieIzquierdo);
+        pieDerecho.setLado("Derecho");
+        pieDerecho.setLado("Izquierdo");
+        piernas.add(pieDerecho);
+        piernas.add(pieIzquierdo);
 
+        List<Repulsor> brazos = new ArrayList();
         Repulsor manoDerecha = new Repulsor();
         Repulsor manoIzquierda = new Repulsor();
         manoDerecha.setTiempoDeUso(0);
         manoIzquierda.setTiempoDeUso(0);
-        mk1.setRepulsorDerecho(manoDerecha);
-        mk1.setRepulsorIzquierdo(manoIzquierda);
+        manoDerecha.setLado("Derecho");
+        manoIzquierda.setLado("Izquierdo");
+        brazos.add(manoDerecha);
+        brazos.add(manoIzquierda);
 
         System.out.println("Identificacion visual de Armadura");
         mk1.setColorPrimario("Rojo");
@@ -72,165 +80,154 @@ public class ArmaduraServicio {
 
     }
 
-    public float caminar(Armadura mk1)throws ArmaduraException {
-        if (mk1.getPropulsorDerecho().isDaniado()) {
-            throw new ArmaduraException("Propulsor derecho dañado, no se puede ejecutar accion");
+    public float caminar(Armadura mk1) throws ArmaduraException {
+        for (Propulsor aux : mk1.getPiernas()) {
+            if (aux.isDaniado()) {
+                throw new ArmaduraException("Propulsor " + aux.getLado() + " dañado, no se puede ejecutar accion");
+            }
         }
-        if (mk1.getPropulsorIzquierdo().isDaniado()) {
-            throw new ArmaduraException("Propulsor izquierdo dañado, no se puede ejecutar accion");
-        }        
         System.out.println("Cuanto tiempo estamos caminando en minutos?");
         int tiempo = leer.nextInt();
-        mk1.getPropulsorDerecho().setTiempoDeUso(tiempo);
-        mk1.getPropulsorIzquierdo().setTiempoDeUso(tiempo);
-        float consumoTotal = ((mk1.getPropulsorDerecho().getConsumo() * tiempo) + (mk1.getPropulsorIzquierdo().getConsumo() * tiempo));
+        for (Propulsor aux : mk1.getPiernas()) {
+            aux.setTiempoDeUso(tiempo);
+        }
+        float consumoTotal = ((mk1.getPiernas().get(0).getConsumo() * tiempo) + (mk1.getPiernas().get(1).getConsumo() * tiempo));
         System.out.println("Se ha caminado por " + tiempo + " minutos");
         Random rand = new Random();
-        double chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getPropulsorDerecho().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
-        }
-        chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getPropulsorIzquierdo().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
+        double chance;
+        for (Propulsor aux : mk1.getPiernas()) {
+            chance = rand.nextDouble();
+            if (chance <= 0.3) {
+                aux.setDaniado(true);
+                System.out.println("El dispositivo se ha dañado");
+            }
         }
         return consumoTotal;
     }
 
     public float correr(Armadura mk1) throws ArmaduraException {
-        if (mk1.getPropulsorDerecho().isDaniado()) {
-            throw new ArmaduraException("Propulsor derecho dañado, no se puede ejecutar accion");
-        }
-        if (mk1.getPropulsorIzquierdo().isDaniado()) {
-            throw new ArmaduraException("Propulsor izquierdo dañado, no se puede ejecutar accion");
+        for (Propulsor aux : mk1.getPiernas()) {
+            if (aux.isDaniado()) {
+                throw new ArmaduraException("Propulsor " + aux.getLado() + " dañado, no se puede ejecutar accion");
+            }
         }
         System.out.println("Cuanto tiempo estamos corriendo en minutos?");
         int tiempo = leer.nextInt();
-        mk1.getPropulsorDerecho().setTiempoDeUso(tiempo);
-        mk1.getPropulsorIzquierdo().setTiempoDeUso(tiempo);
-        float consumoTotal = ((mk1.getPropulsorDerecho().getConsumo() * 2 * tiempo) + (mk1.getPropulsorIzquierdo().getConsumo() * 2 * tiempo));
+        for (Propulsor aux : mk1.getPiernas()) {
+            aux.setTiempoDeUso(tiempo);
+        }
+        float consumoTotal = ((mk1.getPiernas().get(0).getConsumo() * 2 * tiempo) + (mk1.getPiernas().get(1).getConsumo() * 2 * tiempo));
         System.out.println("Se ha corrido por " + tiempo + " minutos");
         Random rand = new Random();
-        double chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getPropulsorDerecho().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
-        }
-        chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getPropulsorIzquierdo().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
+        double chance;
+        for (Propulsor aux : mk1.getPiernas()) {
+            chance = rand.nextDouble();
+            if (chance <= 0.3) {
+                aux.setDaniado(true);
+                System.out.println("El dispositivo se ha dañado");
+            }
         }
         return consumoTotal;
     }
 
     public float propulsarse(Armadura mk1) throws ArmaduraException {
-        if (mk1.getPropulsorDerecho().isDaniado()) {
-            throw new ArmaduraException("Propulsor derecho dañado, no se puede ejecutar accion");
-        }
-        if (mk1.getPropulsorIzquierdo().isDaniado()) {
-            throw new ArmaduraException("Propulsor izquierdo dañado, no se puede ejecutar accion");
+        for (Propulsor aux : mk1.getPiernas()) {
+            if (aux.isDaniado()) {
+                throw new ArmaduraException("Propulsor " + aux.getLado() + " dañado, no se puede ejecutar accion");
+            }
         }
         System.out.println("Durante cuanto tiempo nos estamos propulsando en minutos?");
         int tiempo = leer.nextInt();
-        mk1.getPropulsorDerecho().setTiempoDeUso(tiempo);
-        mk1.getPropulsorIzquierdo().setTiempoDeUso(tiempo);
-        float consumoTotal = ((mk1.getPropulsorDerecho().getConsumo() * 3 * tiempo) + (mk1.getPropulsorIzquierdo().getConsumo() * 3 * tiempo));
+        for (Propulsor aux : mk1.getPiernas()) {
+            aux.setTiempoDeUso(tiempo);
+        }
+        float consumoTotal = ((mk1.getPiernas().get(0).getConsumo() * 3 * tiempo) + (mk1.getPiernas().get(1).getConsumo() * 3 * tiempo));
         System.out.println("Nos hemos propulsado por " + tiempo + " minutos");
         Random rand = new Random();
-        double chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getPropulsorDerecho().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
-        }
-        chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getPropulsorIzquierdo().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
+        double chance;
+        for (Propulsor aux : mk1.getPiernas()) {
+            chance = rand.nextDouble();
+            if (chance <= 0.3) {
+                aux.setDaniado(true);
+                System.out.println("El dispositivo se ha dañado");
+            }
         }
 
         return consumoTotal;
     }
 
-    public float volar(Armadura mk1) throws ArmaduraException{
-        if (mk1.getPropulsorDerecho().isDaniado()) {
-            throw new ArmaduraException("Propulsor derecho dañado, no se puede ejecutar accion");
+    public float volar(Armadura mk1) throws ArmaduraException {
+        for (Propulsor aux : mk1.getPiernas()) {
+            if (aux.isDaniado()) {
+                throw new ArmaduraException("Propulsor " + aux.getLado() + " dañado, no se puede ejecutar accion");
+            }
         }
-        if (mk1.getPropulsorIzquierdo().isDaniado()) {
-            throw new ArmaduraException("Propulsor izquierdo dañado, no se puede ejecutar accion");
+        for (Repulsor aux : mk1.getBrazos()) {
+            if (aux.isDaniado()) {
+                throw new ArmaduraException("Repulsor " + aux.getLado() + " dañado, no se puede ejecutar accion");
+            }
         }
-        if (mk1.getRepulsorDerecho().isDaniado()) {
-            throw new ArmaduraException("Repulsor derecho dañado, no se puede ejecutar accion");
-        }
-        if (mk1.getRepulsorIzquierdo().isDaniado()) {
-            throw new ArmaduraException("Repulsor izquierdo dañado, no se puede ejecutar accion");
-        }        
+
         System.out.println("Durante cuanto tiempo estamos volando en minutos?");
         int tiempo = leer.nextInt();
-        mk1.getPropulsorDerecho().setTiempoDeUso(tiempo);
-        mk1.getPropulsorIzquierdo().setTiempoDeUso(tiempo);
-        mk1.getRepulsorDerecho().setTiempoDeUso(tiempo);
-        mk1.getRepulsorIzquierdo().setTiempoDeUso(tiempo);
-        float consumoTotal = ((mk1.getPropulsorDerecho().getConsumo() * 3 * tiempo)
-                + (mk1.getPropulsorIzquierdo().getConsumo() * 3 * tiempo)
-                + (mk1.getRepulsorDerecho().getConsumo() * 2 * tiempo)
-                + (mk1.getRepulsorIzquierdo().getConsumo() * 2 * tiempo));
+        for (Propulsor aux : mk1.getPiernas()) {
+            aux.setTiempoDeUso(tiempo);
+        }
+        for (Repulsor aux : mk1.getBrazos()) {
+            aux.setTiempoDeUso(tiempo);
+        }
+
+        float consumoTotal = ((mk1.getPiernas().get(0).getConsumo() * 3 * tiempo)
+                + (mk1.getPiernas().get(1).getConsumo() * 3 * tiempo)
+                + (mk1.getBrazos().get(0).getConsumo() * 2 * tiempo)
+                + (mk1.getBrazos().get(1).getConsumo() * 2 * tiempo));
         System.out.println("Hemos volado por " + tiempo + " minutos");
         Random rand = new Random();
-        double chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getPropulsorDerecho().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
+        double chance;
+        for (Propulsor aux : mk1.getPiernas()) {
+            chance = rand.nextDouble();
+            if (chance <= 0.3) {
+                aux.setDaniado(true);
+                System.out.println("El dispositivo se ha dañado");
+            }
         }
-        chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getPropulsorIzquierdo().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
-        }
-        chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getRepulsorIzquierdo().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
-        }
-        chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getRepulsorIzquierdo().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
+        for (Repulsor aux : mk1.getBrazos()) {
+            chance = rand.nextDouble();
+            if (chance <= 0.3) {
+                aux.setDaniado(true);
+                System.out.println("El dispositivo se ha dañado");
+            }
         }
         return consumoTotal;
     }
 
-    public float disparar(Armadura mk1) throws ArmaduraException{
-        if (mk1.getRepulsorDerecho().isDaniado()) {
-            throw new ArmaduraException("Repulsor derecho dañado, no se puede ejecutar accion");
+    public float disparar(Armadura mk1) throws ArmaduraException {
+        for (Repulsor aux : mk1.getBrazos()) {
+            if (aux.isDaniado()) {
+                throw new ArmaduraException("Repulsor " + aux.getLado() + " dañado, no se puede ejecutar accion");
+            }
         }
-        if (mk1.getRepulsorIzquierdo().isDaniado()) {
-            throw new ArmaduraException("Repulsor izquierdo dañado, no se puede ejecutar accion");
-        }        
         System.out.println("Durante cuanto tiempo estamos volando en minutos?");
         int tiempo = leer.nextInt();
-        mk1.getRepulsorDerecho().setTiempoDeUso(tiempo);
-        mk1.getRepulsorIzquierdo().setTiempoDeUso(tiempo);
-        float consumoTotal = ((mk1.getRepulsorDerecho().getConsumo() * 3 * tiempo)
-                + (mk1.getRepulsorIzquierdo().getConsumo() * 3 * tiempo));
+        for (Repulsor aux : mk1.getBrazos()) {
+            aux.setTiempoDeUso(tiempo);
+        }
+        float consumoTotal = ((mk1.getBrazos().get(0).getConsumo() * 3 * tiempo)
+                + (mk1.getBrazos().get(1).getConsumo() * 3 * tiempo));
         System.out.println("Hemos disparado por " + tiempo + " minutos");
         Random rand = new Random();
-        double chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getRepulsorIzquierdo().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
-        }
-        chance = rand.nextDouble();
-        if (chance <= 0.3) {
-            mk1.getRepulsorIzquierdo().setDaniado(true);
-            System.out.println("El dispositivo se ha dañado");
+        double chance;
+        for (Repulsor aux : mk1.getBrazos()) {
+            chance = rand.nextDouble();
+            if (chance <= 0.3) {
+                aux.setDaniado(true);
+                System.out.println("El dispositivo se ha dañado");
+            }
         }
         return consumoTotal;
     }
 
-    public float usarConsola(Armadura mk1) throws ArmaduraException{
+    public float usarConsola(Armadura mk1) throws ArmaduraException {
         if (mk1.getConsola().isDaniado()) {
             throw new ArmaduraException("Consola dañada, no se puede ejecutar accion");
         }
@@ -246,7 +243,7 @@ public class ArmaduraServicio {
         return consumoTotal;
     }
 
-    public float usarSintetizador(Armadura mk1) throws ArmaduraException{
+    public float usarSintetizador(Armadura mk1) throws ArmaduraException {
         if (mk1.getSynth().isDaniado()) {
             throw new ArmaduraException("Sintetizador de voz dañado, no se puede ejecutar accion");
         }
@@ -325,7 +322,7 @@ public class ArmaduraServicio {
         System.out.println(mk1.toString());
     }
 
-    public void estadoReactor(Armadura mk1) throws ArmaduraException{
+    public void estadoReactor(Armadura mk1) throws ArmaduraException {
         System.out.println("Nivel de carga: " + mk1.getArcGenerator().getCarga() + "%");
         System.out.println("Al usar la consola, se han consumido " + usarConsola(mk1) + "J de carga");
         mk1.getArcGenerator().setCargaCurrent(mk1.getArcGenerator().getCargaCurrent() - usarConsola(mk1));
@@ -339,20 +336,118 @@ public class ArmaduraServicio {
         System.out.println((mk1.getArcGenerator().getCargaCurrent() * (Math.pow(10, 7))) + " Ergios");
         System.out.println("O " + ((mk1.getArcGenerator().getCargaCurrent() * 2685) * (Math.pow(10, 6))) + " Caballos Vapor-Hora");
     }
-    
-    public void repararDanios(boolean daniado){
+
+    public void repararDanios(boolean daniado) {
         System.out.println("Intentando reparar daños");
         Random rand = new Random();
         double chance = rand.nextDouble();
         if (chance <= 0.4) {
             daniado = false;
             System.out.println("Reparacion exitosa");
-        }else{
+        } else {
             System.out.println("Falló la reparacion, el dispositivo sigue dañado");
         }
     }
-    
-    public void revisarDispositivos(){
-        
+
+    public void revisarDispositivos(Armadura mk1) throws ArmaduraException {
+        String opc;
+        System.out.println("Comenzando revision de dispositivos");
+        System.out.println("");
+        System.out.println("...");
+        System.out.println("");
+        for (Propulsor aux : mk1.getPiernas()) {
+            if (aux.isDestruido()) {
+                throw new ArmaduraException("El propulsor " + aux.getLado() + " Ha sido destruido y no puede repararse.");
+            }
+            if (aux.isDaniado()) {
+                System.out.println("Se encontraron daños en el propulsor " + aux.getLado() + ". Desea intentar repararlo? ");
+                opc = leer.next();
+                while (!opc.equalsIgnoreCase("s") && !opc.equalsIgnoreCase("n")) {
+                    System.out.println("Ingreso invalido, ingrese S o N");
+                    opc = leer.next();
+                }
+                if (!opc.equalsIgnoreCase("s")) {
+                    repararDanios(aux.isDaniado());
+                    Random rand = new Random();
+                    double chance = rand.nextDouble();
+                    if (chance <= 0.3) {
+                        aux.setDestruido(true);
+                        System.out.println("El dispositivo ha sido destruido");
+                    }
+
+                } else {
+                    System.out.println("El dispositivo se mantiene dañado");
+                }
+            }
+        }
+        for (Repulsor aux : mk1.getBrazos()) {
+            if (aux.isDestruido()) {
+                throw new ArmaduraException("El repulsor " + aux.getLado() + " Ha sido destruido y no puede repararse.");
+            }
+            if (aux.isDaniado()) {
+                System.out.println("Se encontraron daños en el repulsor " + aux.getLado() + ". Desea intentar repararlo? ");
+                opc = leer.next();
+                while (!opc.equalsIgnoreCase("s") && !opc.equalsIgnoreCase("n")) {
+                    System.out.println("Ingreso invalido, ingrese S o N");
+                    opc = leer.next();
+                }
+                if (!opc.equalsIgnoreCase("s")) {
+                    repararDanios(aux.isDaniado());
+                    Random rand = new Random();
+                    double chance = rand.nextDouble();
+                    if (chance <= 0.3) {
+                        aux.setDestruido(true);
+                        System.out.println("El dispositivo ha sido destruido");
+                    }
+                } else {
+                    System.out.println("El dispositivo se mantiene dañado");
+                }
+            }
+        }
+        if (mk1.getConsola().isDaniado()) {
+            if (mk1.getConsola().isDestruido()) {
+                throw new ArmaduraException("La consola ha sido destruida y no puede repararse.");
+            }
+            System.out.println("Se encontraron daños en la consola. Desea intentar repararla? ");
+            opc = leer.next();
+            while (!opc.equalsIgnoreCase("s") && !opc.equalsIgnoreCase("n")) {
+                System.out.println("Ingreso invalido, ingrese S o N");
+                opc = leer.next();
+            }
+            if (!opc.equalsIgnoreCase("s")) {
+                repararDanios(mk1.getConsola().isDaniado());
+                Random rand = new Random();
+                double chance = rand.nextDouble();
+                if (chance <= 0.3) {
+                    mk1.getConsola().setDestruido(true);
+                    System.out.println("El dispositivo ha sido destruido");
+                }
+            } else {
+                System.out.println("El dispositivo se mantiene dañado");
+            }
+        }
+        if (mk1.getSynth().isDaniado()) {
+            if (mk1.getSynth().isDestruido()) {
+                throw new ArmaduraException("El sintetizador de voz ha sido destruido y no puede repararse.");
+            }
+            System.out.println("Se encontraron daños en el Sintetizador de voz. Desea intentar repararlo? ");
+            opc = leer.next();
+            while (!opc.equalsIgnoreCase("s") && !opc.equalsIgnoreCase("n")) {
+                System.out.println("Ingreso invalido, ingrese S o N");
+                opc = leer.next();
+            }
+            if (!opc.equalsIgnoreCase("s")) {
+                repararDanios(mk1.getSynth().isDaniado());
+                Random rand = new Random();
+                double chance = rand.nextDouble();
+                if (chance <= 0.3) {
+                    mk1.getSynth().setDestruido(true);
+                    System.out.println("El dispositivo ha sido destruido");
+                }
+            } else {
+                System.out.println("El dispositivo se mantiene dañado");
+            }
+        }
+
     }
 }
