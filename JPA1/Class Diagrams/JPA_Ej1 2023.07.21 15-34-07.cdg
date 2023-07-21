@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="JPA_Ej1">
+  <ClassDiagramComponents>
+    <Class name="Autor" package="libreria.entidades" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Integer" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="alta" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getId" returnType="Integer" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getAlta" returnType="Boolean" visibility="public"/>
+        <Method name="setAlta" returnType="void" visibility="public">
+          <Argument type="Boolean" name="alta"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Editorial" package="libreria.entidades" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="id" type="Integer" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="alta" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getId" returnType="Integer" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getAlta" returnType="Boolean" visibility="public"/>
+        <Method name="setAlta" returnType="void" visibility="public">
+          <Argument type="Boolean" name="alta"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Libro" package="libreria.entidades" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="isbn" type="Long" visibility="private"/>
+        <Field name="titulo" type="String" visibility="private"/>
+        <Field name="anio" type="Integer" visibility="private"/>
+        <Field name="ejemplares" type="Integer" visibility="private"/>
+        <Field name="elemplaresPrestados" type="Integer" visibility="private"/>
+        <Field name="ejemplaresRestantes" type="Integer" visibility="private"/>
+        <Field name="alta" type="Boolean" visibility="private"/>
+        <Field name="autor" type="Autor" visibility="private"/>
+        <Field name="editorial" type="Editorial" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getIsbn" returnType="Long" visibility="public"/>
+        <Method name="setIsbn" returnType="void" visibility="public">
+          <Argument type="Long" name="isbn"/>
+        </Method>
+        <Method name="getTitulo" returnType="String" visibility="public"/>
+        <Method name="setTitulo" returnType="void" visibility="public">
+          <Argument type="String" name="titulo"/>
+        </Method>
+        <Method name="getAnio" returnType="Integer" visibility="public"/>
+        <Method name="setAnio" returnType="void" visibility="public">
+          <Argument type="Integer" name="anio"/>
+        </Method>
+        <Method name="getEjemplares" returnType="Integer" visibility="public"/>
+        <Method name="setEjemplares" returnType="void" visibility="public">
+          <Argument type="Integer" name="ejemplares"/>
+        </Method>
+        <Method name="getElemplaresPrestados" returnType="Integer" visibility="public"/>
+        <Method name="setElemplaresPrestados" returnType="void" visibility="public">
+          <Argument type="Integer" name="elemplaresPrestados"/>
+        </Method>
+        <Method name="getEjemplaresRestantes" returnType="Integer" visibility="public"/>
+        <Method name="setEjemplaresRestantes" returnType="void" visibility="public">
+          <Argument type="Integer" name="ejemplaresRestantes"/>
+        </Method>
+        <Method name="getAlta" returnType="Boolean" visibility="public"/>
+        <Method name="setAlta" returnType="void" visibility="public">
+          <Argument type="Boolean" name="alta"/>
+        </Method>
+        <Method name="getAutor" returnType="Autor" visibility="public"/>
+        <Method name="setAutor" returnType="void" visibility="public">
+          <Argument type="Autor" name="autor"/>
+        </Method>
+        <Method name="getEditorial" returnType="Editorial" visibility="public"/>
+        <Method name="setEditorial" returnType="void" visibility="public">
+          <Argument type="Editorial" name="editorial"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AutorDAO" package="libreria.persistencia" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="guardar" returnType="void" visibility="public">
+          <Argument type="Autor" name="autor"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="eliminarAutorLogico" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="editarAutor" returnType="void" visibility="public">
+          <Argument type="Autor" name="autor"/>
+        </Method>
+        <Method name="buscarPorId" returnType="Autor" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="buscarPorNombre" returnType="Autor" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="listartodos" returnType="List&lt;Autor&gt;" visibility="public"/>
+        <Method name="listarAltas" returnType="List&lt;Autor&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DAO" package="libreria.persistencia" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="EMF" type="EntityManagerFactory" visibility="protected" isFinal="true"/>
+        <Field name="em" type="EntityManager" visibility="protected"/>
+        <Field name="leer" type="Scanner" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="conectar" returnType="void" visibility="protected"/>
+        <Method name="desconectar" returnType="void" visibility="protected"/>
+        <Method name="guardar" returnType="void" visibility="protected">
+          <Argument type="T" name="objeto"/>
+        </Method>
+        <Method name="editar" returnType="void" visibility="protected">
+          <Argument type="T" name="objeto"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="protected">
+          <Argument type="T" name="objeto"/>
+        </Method>
+        <Method name="eliminarLogico" returnType="void" visibility="protected">
+          <Argument type="T" name="objeto"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EditorialDAO" package="libreria.persistencia" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="guardar" returnType="void" visibility="public">
+          <Argument type="Editorial" name="editorial"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="eliminarEditorialLogico" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="editarEditorial" returnType="void" visibility="public">
+          <Argument type="Editorial" name="editorial"/>
+        </Method>
+        <Method name="buscarPorId" returnType="Editorial" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="buscarPorNombre" returnType="Editorial" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="listartodos" returnType="List&lt;Editorial&gt;" visibility="public"/>
+        <Method name="listarAltas" returnType="List&lt;Editorial&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LibroDAO" package="libreria.persistencia" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="guardar" returnType="void" visibility="public">
+          <Argument type="Libro" name="libro"/>
+        </Method>
+        <Method name="eliminarPorIsbn" returnType="void" visibility="public">
+          <Argument type="Long" name="isbn"/>
+        </Method>
+        <Method name="eliminarLibroLogico" returnType="void" visibility="public">
+          <Argument type="Long" name="isbn"/>
+        </Method>
+        <Method name="editarLibro" returnType="void" visibility="public">
+          <Argument type="Libro" name="libro"/>
+        </Method>
+        <Method name="buscarPorIsbn" returnType="Libro" visibility="public">
+          <Argument type="Long" name="isbn"/>
+        </Method>
+        <Method name="buscarPorTitulo" returnType="Libro" visibility="public">
+          <Argument type="String" name="titulo"/>
+        </Method>
+        <Method name="buscarPorAutor" returnType="List&lt;Libro&gt;" visibility="public">
+          <Argument type="String" name="autor"/>
+        </Method>
+        <Method name="buscarPorAutorAlta" returnType="List&lt;Libro&gt;" visibility="public">
+          <Argument type="String" name="autor"/>
+        </Method>
+        <Method name="buscarPorEditorial" returnType="List&lt;Libro&gt;" visibility="public">
+          <Argument type="String" name="editorial"/>
+        </Method>
+        <Method name="buscarPorEditorialAlta" returnType="List&lt;Libro&gt;" visibility="public">
+          <Argument type="String" name="editorial"/>
+        </Method>
+        <Method name="listartodos" returnType="List&lt;Libro&gt;" visibility="public"/>
+        <Method name="listarAltas" returnType="List&lt;Libro&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Menu" package="libreria.principal" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="ls" type="LibroServicio" visibility="private" isFinal="true"/>
+        <Field name="as" type="AutorServicio" visibility="private" isFinal="true"/>
+        <Field name="es" type="EditorialServicio" visibility="private" isFinal="true"/>
+        <Field name="leer" type="Scanner" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="ui" returnType="void" visibility="public"/>
+        <Method name="uilibro" returnType="void" visibility="public"/>
+        <Method name="uiautor" returnType="void" visibility="public"/>
+        <Method name="uiedit" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Principal" package="libreria.principal" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AutorServicio" package="libreria.servicios" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="DAO" type="AutorDAO" visibility="private" isFinal="true"/>
+        <Field name="leer" type="Scanner" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="crearAutor" returnType="Autor" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="buscarPorId" returnType="Autor" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="buscarPorNombre" returnType="Autor" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="buscar" returnType="Autor" visibility="public"/>
+        <Method name="editarAutor" returnType="void" visibility="public"/>
+        <Method name="eliminarPorId" returnType="boolean" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="eliminarAutorLogico" returnType="boolean" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="listarAutores" returnType="List&lt;Autor&gt;" visibility="public"/>
+        <Method name="listarAltas" returnType="List&lt;Autor&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="EditorialServicio" package="libreria.servicios" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="DAO" type="EditorialDAO" visibility="private" isFinal="true"/>
+        <Field name="leer" type="Scanner" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="crearEditorial" returnType="Editorial" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="buscarPorId" returnType="Editorial" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="buscarPorNombre" returnType="Editorial" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="buscar" returnType="Editorial" visibility="public"/>
+        <Method name="editarEditorial" returnType="void" visibility="public"/>
+        <Method name="eliminarPorId" returnType="boolean" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="eliminarEditorialL" returnType="boolean" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="listarEditoriales" returnType="List&lt;Editorial&gt;" visibility="public"/>
+        <Method name="listarAltas" returnType="List&lt;Editorial&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LibroServicio" package="libreria.servicios" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="DAO" type="LibroDAO" visibility="private" isFinal="true"/>
+        <Field name="leer" type="Scanner" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="crearLibro" returnType="Libro" visibility="public">
+          <Argument type="String" name="titulo"/>
+          <Argument type="Integer" name="anio"/>
+          <Argument type="Integer" name="ejemplares"/>
+          <Argument type="Integer" name="elemplaresPrestados"/>
+          <Argument type="Integer" name="ejemplaresRestantes"/>
+          <Argument type="Autor" name="autor"/>
+          <Argument type="Editorial" name="editorial"/>
+        </Method>
+        <Method name="buscarPorISBN" returnType="Libro" visibility="public">
+          <Argument type="Long" name="isbn"/>
+        </Method>
+        <Method name="buscarPorTitulo" returnType="Libro" visibility="public">
+          <Argument type="String" name="titulo"/>
+        </Method>
+        <Method name="buscar" returnType="Libro" visibility="public"/>
+        <Method name="editarLibro" returnType="void" visibility="public">
+          <Argument type="Long" name="isbn"/>
+        </Method>
+        <Method name="eliminarPorISBN" returnType="boolean" visibility="public">
+          <Argument type="Long" name="isbn"/>
+        </Method>
+        <Method name="eliminarLibroLogico" returnType="boolean" visibility="public">
+          <Argument type="Long" name="isbn"/>
+        </Method>
+        <Method name="listarLibros" returnType="List&lt;Libro&gt;" visibility="public"/>
+        <Method name="listarAltas" returnType="List&lt;Libro&gt;" visibility="public"/>
+        <Method name="buscarPorAutor" returnType="List&lt;Libro&gt;" visibility="public">
+          <Argument type="String" name="autor"/>
+        </Method>
+        <Method name="buscarPorAutorAlta" returnType="List&lt;Libro&gt;" visibility="public">
+          <Argument type="String" name="autor"/>
+        </Method>
+        <Method name="buscarPorEditorial" returnType="List&lt;Libro&gt;" visibility="public">
+          <Argument type="String" name="editorial"/>
+        </Method>
+        <Method name="buscarPorEditorialAlta" returnType="List&lt;Libro&gt;" visibility="public">
+          <Argument type="String" name="editorial"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="libreria.persistencia.LibroDAO" target="libreria.entidades.Libro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="libreria.servicios.AutorServicio" target="libreria.entidades.Autor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="libreria.persistencia.EditorialDAO" target="libreria.persistencia.DAO"/>
+    <HasRelation name="ls" source="libreria.principal.Menu" target="libreria.servicios.LibroServicio" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="autor" source="libreria.entidades.Libro" target="libreria.entidades.Autor" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="libreria.entidades.Libro" target="libreria.entidades.Autor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="libreria.persistencia.EditorialDAO" target="libreria.entidades.Editorial" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="libreria.persistencia.AutorDAO" target="libreria.persistencia.DAO"/>
+    <UseRelation source="libreria.servicios.LibroServicio" target="libreria.entidades.Libro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="libreria.entidades.Libro" target="libreria.entidades.Editorial" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="es" source="libreria.principal.Menu" target="libreria.servicios.EditorialServicio" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="libreria.persistencia.AutorDAO" target="libreria.entidades.Autor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="DAO" source="libreria.servicios.LibroServicio" target="libreria.persistencia.LibroDAO" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="as" source="libreria.principal.Menu" target="libreria.servicios.AutorServicio" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="DAO" source="libreria.servicios.AutorServicio" target="libreria.persistencia.AutorDAO" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="DAO" source="libreria.servicios.EditorialServicio" target="libreria.persistencia.EditorialDAO" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="libreria.servicios.EditorialServicio" target="libreria.entidades.Editorial" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="libreria.persistencia.LibroDAO" target="libreria.persistencia.DAO"/>
+    <HasRelation name="editorial" source="libreria.entidades.Libro" target="libreria.entidades.Editorial" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
